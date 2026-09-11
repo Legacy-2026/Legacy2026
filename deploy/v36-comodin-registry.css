@@ -1,0 +1,346 @@
+/* SAFARI V36 — registro de comodines */
+.comodin-registry-card-v36 { position: relative; }
+
+.comodin-registry-modal-v36,
+.comodin-registry-editor-v36 {
+  position: fixed;
+  inset: 0;
+  z-index: 1450;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.comodin-registry-editor-v36 { z-index: 1500; }
+.comodin-registry-modal-v36.open,
+.comodin-registry-editor-v36.open { visibility: visible; pointer-events: auto; }
+
+.comodin-registry-backdrop-v36,
+.comodin-registry-editor-backdrop-v36 {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.84);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.comodin-registry-window-v36,
+.comodin-registry-editor-window-v36 {
+  position: relative;
+  width: min(980px, 100%);
+  max-height: 92vh;
+  overflow: auto;
+  background: #f2f2ef;
+  color: #050505;
+  border: 1px solid rgba(255,255,255,.3);
+  box-shadow: 0 30px 100px rgba(0,0,0,.6);
+  min-width: 0;
+}
+
+.comodin-registry-editor-window-v36 { width: min(560px, 100%); }
+
+.comodin-registry-header-v36,
+.comodin-registry-editor-window-v36 > header {
+  min-height: 88px;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid rgba(0,0,0,.14);
+}
+
+.comodin-registry-header-v36 > div,
+.comodin-registry-editor-window-v36 > header > div { min-width: 0; }
+
+.comodin-registry-header-v36 p,
+.comodin-registry-editor-window-v36 > header p {
+  color: #777;
+  font-size: .5rem;
+  letter-spacing: .17em;
+  margin-bottom: 5px;
+}
+
+.comodin-registry-header-v36 h3,
+.comodin-registry-editor-window-v36 > header h4 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.05rem, 3vw, 1.55rem);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.comodin-registry-close-v36,
+.comodin-registry-editor-window-v36 > header button {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border: 1px solid #050505;
+  background: transparent;
+  color: #050505;
+  font-size: 1.35rem;
+  cursor: pointer;
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+.comodin-registry-close-v36:hover,
+.comodin-registry-editor-window-v36 > header button:hover { background: #050505; color: #fff; }
+
+.comodin-registry-toolbar-v36 {
+  padding: 14px 22px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  min-width: 0;
+}
+
+.comodin-registry-stats-v36 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(92px, 1fr));
+  gap: 7px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.comodin-registry-stats-v36 > div {
+  min-width: 0;
+  border: 1px solid rgba(0,0,0,.12);
+  padding: 9px 11px;
+}
+
+.comodin-registry-stats-v36 span {
+  display: block;
+  color: #777;
+  font-size: .45rem;
+  letter-spacing: .12em;
+  overflow-wrap: anywhere;
+}
+
+.comodin-registry-stats-v36 strong { display: block; margin-top: 4px; font-size: 1rem; }
+
+.comodin-registry-add-v36 {
+  flex: 0 1 190px;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  border: 1px solid #050505;
+  background: #050505;
+  color: #fff;
+  padding: 10px 13px;
+  font-size: .55rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+  cursor: pointer;
+  box-sizing: border-box !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+.comodin-registry-add-v36:hover { background: transparent; color: #050505; }
+
+.comodin-registry-status-v36 {
+  min-height: 34px;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  color: #676763;
+  font-size: .47rem;
+  letter-spacing: .12em;
+}
+
+.comodin-registry-status-v36 span {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #2d6b45;
+  box-shadow: 0 0 0 3px rgba(45,107,69,.12);
+}
+.comodin-registry-status-v36.saving span { background: #a5781e; box-shadow: 0 0 0 3px rgba(165,120,30,.12); }
+.comodin-registry-status-v36.error span { background: #8a2424; box-shadow: 0 0 0 3px rgba(138,36,36,.12); }
+
+.comodin-registry-body-v36 { padding: 18px 22px 24px; }
+.comodin-registry-list-v36 { display: grid; gap: 8px; }
+
+.comodin-registry-item-v36 {
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) minmax(0, auto);
+  align-items: center;
+  gap: 12px;
+  padding: 13px;
+  border: 1px solid rgba(0,0,0,.14);
+  background: rgba(255,255,255,.25);
+}
+
+.comodin-registry-item-v36.is-found { border-left: 4px solid #2d6b45; }
+.comodin-registry-item-v36.is-pending { border-left: 4px solid #8a8a84; }
+.comodin-registry-item-v36 > * { min-width: 0; max-width: 100%; }
+
+.comodin-registry-index-v36 {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0,0,0,.2);
+  font-size: .55rem;
+  font-weight: 800;
+}
+
+.comodin-registry-line-v36 { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+.comodin-registry-category-v36,
+.comodin-registry-state-v36 {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border: 1px solid rgba(0,0,0,.18);
+  font-size: .44rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.comodin-registry-category-v36.category-diamante { background: #e8eef1; }
+.comodin-registry-category-v36.category-oro { background: #eee5c6; }
+.comodin-registry-category-v36.category-normal { background: #e4e4e1; }
+.comodin-registry-item-v36.is-found .comodin-registry-state-v36 { background: #dceadf; }
+
+.comodin-registry-copy-v36 h5 {
+  margin: 8px 0 5px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: .95rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.comodin-registry-copy-v36 small {
+  color: #777;
+  font-size: .43rem;
+  letter-spacing: .1em;
+  overflow-wrap: anywhere;
+}
+
+.comodin-registry-actions-v36 {
+  display: flex;
+  flex-wrap: wrap !important;
+  justify-content: flex-end;
+  gap: 6px;
+  min-width: 0 !important;
+  max-width: 100%;
+}
+
+.comodin-registry-actions-v36 button,
+.comodin-registry-editor-actions-v36 button {
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  border: 1px solid rgba(0,0,0,.32);
+  background: transparent;
+  color: #050505;
+  min-height: 38px;
+  padding: 8px 10px;
+  font-size: .48rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  cursor: pointer;
+}
+
+.comodin-registry-actions-v36 button:hover,
+.comodin-registry-editor-actions-v36 button:hover { background: #050505; color: #fff; }
+.comodin-registry-actions-v36 button.danger:hover { background: #7e1f1f; border-color: #7e1f1f; }
+.comodin-registry-actions-v36 .comodin-registry-toggle-v36 { flex: 1 1 140px; }
+
+.comodin-registry-empty-v36 {
+  display: none;
+  padding: 42px 18px;
+  text-align: center;
+  border: 1px dashed rgba(0,0,0,.2);
+}
+.comodin-registry-empty-v36.visible { display: block; }
+.comodin-registry-empty-v36 strong { font-size: .7rem; letter-spacing: .12em; }
+.comodin-registry-empty-v36 p { margin-top: 8px; color: #777; font-size: .68rem; }
+
+.comodin-registry-editor-window-v36 form {
+  padding: 20px 22px 24px;
+  display: grid;
+  gap: 15px;
+}
+.comodin-registry-editor-window-v36 label { display: grid; gap: 7px; min-width: 0; }
+.comodin-registry-editor-window-v36 label > span {
+  font-size: .5rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+.comodin-registry-editor-window-v36 input,
+.comodin-registry-editor-window-v36 select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 45px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0,0,0,.25);
+  background: #fff;
+  color: #050505;
+  padding: 0 12px;
+  font: inherit;
+  font-size: .78rem;
+}
+
+.comodin-registry-editor-actions-v36 {
+  display: flex;
+  flex-wrap: wrap !important;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 4px;
+}
+.comodin-registry-editor-actions-v36 button { flex: 1 1 150px; }
+.comodin-registry-editor-actions-v36 button[type="submit"] { background: #050505; color: #fff; }
+.comodin-registry-editor-actions-v36 button[type="submit"]:hover { background: transparent; color: #050505; }
+
+body.comodin-registry-open-v36 { overflow: hidden; }
+
+@media (max-width: 760px) {
+  .comodin-registry-modal-v36,
+  .comodin-registry-editor-v36 { padding: 8px; }
+  .comodin-registry-window-v36,
+  .comodin-registry-editor-window-v36 { max-height: 96vh; }
+  .comodin-registry-header-v36,
+  .comodin-registry-editor-window-v36 > header { padding: 16px; }
+  .comodin-registry-toolbar-v36 {
+    padding: 12px 16px;
+    flex-direction: column;
+  }
+  .comodin-registry-add-v36 { width: 100%; flex-basis: auto; min-height: 44px; }
+  .comodin-registry-status-v36 { padding: 0 16px; }
+  .comodin-registry-body-v36 { padding: 14px 16px 18px; }
+  .comodin-registry-item-v36 {
+    grid-template-columns: 34px minmax(0, 1fr);
+    align-items: start;
+    row-gap: 10px;
+  }
+  .comodin-registry-actions-v36 {
+    grid-column: 2;
+    width: 100%;
+    justify-content: stretch;
+  }
+  .comodin-registry-actions-v36 button { flex: 1 1 120px; min-height: 40px; }
+  .comodin-registry-editor-window-v36 form { padding: 16px; }
+}
+
+@media (max-width: 460px) {
+  .comodin-registry-stats-v36 { grid-template-columns: 1fr; }
+  .comodin-registry-actions-v36 { flex-direction: column; }
+  .comodin-registry-actions-v36 button,
+  .comodin-registry-editor-actions-v36 button { width: 100% !important; flex-basis: auto; }
+  .comodin-registry-item-v36 { padding: 11px; }
+}
