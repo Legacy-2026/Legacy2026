@@ -1,0 +1,175 @@
+/* SAFARI V37 — promo + puntaje de comodines */
+.comodin-registry-points-v37,
+.comodin-registry-promo-v37 {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border: 1px solid rgba(0,0,0,.18);
+  font-size: .44rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.comodin-registry-points-v37 { background: #eef0e7; }
+.comodin-registry-promo-v37 { background: #e7ecef; }
+.comodin-registry-promo-v37.missing { background: #f4dfdf; color: #7e1f1f; }
+
+.comodin-registry-promo-field-v37.is-hidden { display: none !important; }
+.comodin-registry-promo-field-v37 small {
+  color: #777;
+  font-size: .48rem;
+  line-height: 1.45;
+}
+
+.comodin-found-modal-v37 {
+  position: fixed;
+  inset: 0;
+  z-index: 1550;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  visibility: hidden;
+  pointer-events: none;
+}
+.comodin-found-modal-v37.open { visibility: visible; pointer-events: auto; }
+.comodin-found-backdrop-v37 {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.comodin-found-window-v37 {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: 94vh;
+  overflow: auto;
+  background: #f2f2ef;
+  color: #050505;
+  border: 1px solid rgba(255,255,255,.3);
+  box-shadow: 0 30px 100px rgba(0,0,0,.65);
+  min-width: 0;
+}
+.comodin-found-window-v37 > header {
+  min-height: 88px;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid rgba(0,0,0,.14);
+}
+.comodin-found-window-v37 > header > div { min-width: 0; }
+.comodin-found-window-v37 > header p {
+  color: #777;
+  font-size: .5rem;
+  letter-spacing: .17em;
+  margin-bottom: 5px;
+}
+.comodin-found-window-v37 > header h4 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.05rem, 3vw, 1.45rem);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+.comodin-found-window-v37 > header button {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border: 1px solid #050505;
+  background: transparent;
+  color: #050505;
+  font-size: 1.35rem;
+  cursor: pointer;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+.comodin-found-window-v37 > header button:hover { background: #050505; color: #fff; }
+
+.comodin-found-body-v37 {
+  padding: 20px 22px 24px;
+  display: grid;
+  gap: 15px;
+}
+.comodin-found-summary-v37 {
+  border: 1px solid rgba(0,0,0,.15);
+  padding: 13px;
+  min-width: 0;
+}
+.comodin-found-summary-v37 span {
+  display: block;
+  color: #777;
+  font-size: .47rem;
+  letter-spacing: .12em;
+}
+.comodin-found-summary-v37 strong {
+  display: block;
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+.comodin-found-body-v37 label { display: grid; gap: 7px; min-width: 0; }
+.comodin-found-body-v37 label > span {
+  font-size: .5rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+.comodin-found-body-v37 select,
+.comodin-found-body-v37 input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 45px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0,0,0,.25);
+  background: #fff;
+  color: #050505;
+  padding: 0 12px;
+  font: inherit;
+  font-size: .78rem;
+}
+.comodin-found-body-v37 > p {
+  color: #666;
+  font-size: .62rem;
+  line-height: 1.55;
+}
+.comodin-found-actions-v37 {
+  display: flex;
+  flex-wrap: wrap !important;
+  gap: 8px;
+}
+.comodin-found-actions-v37 button {
+  flex: 1 1 180px;
+  min-height: 42px;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  border: 1px solid #050505;
+  background: transparent;
+  color: #050505;
+  padding: 9px 11px;
+  font-size: .5rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  cursor: pointer;
+}
+.comodin-found-actions-v37 button:last-child { background: #050505; color: #fff; }
+.comodin-found-actions-v37 button:hover { background: #050505; color: #fff; }
+.comodin-found-actions-v37 button:last-child:hover { background: transparent; color: #050505; }
+.comodin-found-actions-v37 button:disabled { opacity: .55; cursor: wait; }
+
+@media (max-width: 760px) {
+  .comodin-found-modal-v37 { padding: 8px; }
+  .comodin-found-window-v37 > header { padding: 16px; }
+  .comodin-found-body-v37 { padding: 16px; }
+}
+
+@media (max-width: 460px) {
+  .comodin-found-actions-v37 { flex-direction: column; }
+  .comodin-found-actions-v37 button { width: 100% !important; flex-basis: auto; }
+}
