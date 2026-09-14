@@ -1,4 +1,4 @@
-name: Force Safari V38 loader
+name: Force Safari V39 loader
 
 on:
   push:
@@ -17,9 +17,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Validate V38 JavaScript
+      - name: Validate V39 JavaScript
         run: |
-          node --check deploy/safari-loader-v38.js
+          node --check deploy/safari-loader-v39.js
+          node --check deploy/v39-word-export.js
           node --check deploy/v38-sanction-scores.js
           node --check deploy/v37-comodin-registry.js
           node --check deploy/v35-move-item.js
@@ -32,15 +33,15 @@ jobs:
           node --check deploy/v27-map.js
           node --check deploy/v22-map-mobile-search.js
 
-      - name: Switch index to cache-safe V38 loader
+      - name: Switch index to cache-safe V39 loader
         run: |
           python - <<'PY'
           from pathlib import Path
           import re
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
-          pattern = r'<script src="\.\/deploy\/(?:v16-map-loader\.js\?v=\d+|safari-loader-v28\.js(?:\?v=\d+)?|safari-loader-v29\.js(?:\?v=\d+)?|safari-loader-v30\.js(?:\?v=\d+)?|safari-loader-v31\.js(?:\?v=\d+)?|safari-loader-v32\.js(?:\?v=\d+)?|safari-loader-v33\.js(?:\?v=\d+)?|safari-loader-v34\.js(?:\?v=\d+)?|safari-loader-v35\.js(?:\?v=\d+)?|safari-loader-v36\.js(?:\?v=\d+)?|safari-loader-v37\.js(?:\?v=\d+)?|safari-loader-v38\.js(?:\?v=\d+)?)"></script>'
-          replacement = '<script src="./deploy/safari-loader-v38.js?v=38"></script>'
+          pattern = r'<script src="\.\/deploy\/(?:v16-map-loader\.js\?v=\d+|safari-loader-v28\.js(?:\?v=\d+)?|safari-loader-v29\.js(?:\?v=\d+)?|safari-loader-v30\.js(?:\?v=\d+)?|safari-loader-v31\.js(?:\?v=\d+)?|safari-loader-v32\.js(?:\?v=\d+)?|safari-loader-v33\.js(?:\?v=\d+)?|safari-loader-v34\.js(?:\?v=\d+)?|safari-loader-v35\.js(?:\?v=\d+)?|safari-loader-v36\.js(?:\?v=\d+)?|safari-loader-v37\.js(?:\?v=\d+)?|safari-loader-v38\.js(?:\?v=\d+)?|safari-loader-v39\.js(?:\?v=\d+)?)"></script>'
+          replacement = '<script src="./deploy/safari-loader-v39.js?v=39"></script>'
           s2, count = re.subn(pattern, replacement, s)
           if count == 0:
               raise SystemExit('Safari loader reference not found')
@@ -49,14 +50,14 @@ jobs:
           p.write_text(s2, encoding='utf-8')
           PY
 
-      - name: Commit V38 loader switch
+      - name: Commit V39 loader switch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           if git diff --cached --quiet; then
-            echo "Index already uses Safari V38 loader"
+            echo "Index already uses Safari V39 loader"
           else
-            git commit -m "Activate cache-safe Safari V38 loader"
+            git commit -m "Activate cache-safe Safari V39 loader"
             git push
           fi
