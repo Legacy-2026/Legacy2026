@@ -56,7 +56,7 @@ body{display:flex;align-items:center;justify-content:center;padding:24px;backgro
 </section>
 <section class="stage" id="s3">
 <div class="label">Archivo III</div>
-<div class="code">VDÑ VDLUDO</div>
+<div class="code">VRLUBN</div>
 <input id="a3" class="answer" autocomplete="off" spellcheck="false" placeholder="DESTINO FINAL" />
 <div class="actions"><button id="b3" type="button">Abrir destino</button></div><div id="f3" class="feedback"></div>
 <div id="success" class="success"><small>Destino desbloqueado</small><strong id="destination"></strong></div>
@@ -86,14 +86,14 @@ body{display:flex;align-items:center;justify-content:center;padding:24px;backgro
 <script>
 const H1='f5ad1cf3dd5feb319c819efd8ecd264b9064da490316dc0e8a59ee8557a974ba';
 const H2='f0b74395581d2ace228d70b8020c7bcf111e959180519ef5841af71b463b76ee';
-const H3='fad95229cef9950af4a81f9309ad616edcb6cddcb93b7c6d502987f0c59af276';
+const H3='72b782dcd11005b0de19cc752598fbd421abee56d71b6a2a2f33c7d517015509';
 function norm(v){return String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[^A-ZÑ0-9]+/g,' ').trim()}
 async function hash(v){const b=new TextEncoder().encode(norm(v));const h=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,'0')).join('')}
 async function check(input,expected,feedback){const i=document.getElementById(input),f=document.getElementById(feedback);const ok=(await hash(i.value))===expected;f.className='feedback '+(ok?'ok':'bad');f.textContent=ok?'CORRECTO · SIGUIENTE ARCHIVO DESBLOQUEADO':'NO COINCIDE · REVISÁ EL CÓDIGO';return ok}
 function openStage(id,input){document.getElementById(id).classList.add('open');setTimeout(()=>document.getElementById(input).focus(),220)}
 document.getElementById('b1').onclick=async()=>{if(await check('a1',H1,'f1'))openStage('s2','a2')};
 document.getElementById('b2').onclick=async()=>{if(await check('a2',H2,'f2'))openStage('s3','a3')};
-document.getElementById('b3').onclick=async()=>{if(await check('a3',H3,'f3')){document.getElementById('f3').className='feedback ok';document.getElementById('f3').textContent='CORRECTO · DESTINO DESBLOQUEADO';const nums=[76,65,83,32,77,65,82,73,65,83];document.getElementById('destination').textContent=String.fromCharCode(...nums);document.getElementById('success').classList.add('show')}};
+document.getElementById('b3').onclick=async()=>{if(await check('a3',H3,'f3')){document.getElementById('f3').className='feedback ok';document.getElementById('f3').textContent='CORRECTO · DESTINO DESBLOQUEADO';const nums=[75,89,82,73,79,83];document.getElementById('destination').textContent=String.fromCharCode(...nums);document.getElementById('success').classList.add('show')}};
 [['a1','b1'],['a2','b2'],['a3','b3']].forEach(([a,b])=>document.getElementById(a).addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById(b).click()}));
 </script>
 </body>
